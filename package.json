@@ -1,0 +1,13 @@
+{
+  "name": "curse-ws",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "bun-types": "latest"
+  }
+}
