@@ -1,0 +1,18 @@
+services:
+  curse-ws:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${WS_PORT:-3010}:3010"
+    environment:
+      WS_PORT: "3010"
+      WS_PRODUCER_SECRET: ${WS_PRODUCER_SECRET}
+      WS_CONSUMER_SECRET: ${WS_CONSUMER_SECRET}
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3010/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
